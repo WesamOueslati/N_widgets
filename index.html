@@ -1,32 +1,49 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <style>
+<meta charset="UTF-8">
+<title>Neon Clock</title>
+<style>
     body {
-      background: #1e1e1e;
-      color: white;
-      font-family: sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-size: 48px;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #0e0e0e;
+        font-family: "Consolas", monospace;
     }
-  </style>
+
+    #clock {
+        font-size: 80px;
+        font-weight: bold;
+        color: #00eaff;
+        text-shadow: 
+            0 0 10px #00eaff,
+            0 0 20px #00eaff,
+            0 0 40px #00eaff,
+            0 0 80px #00eaff;
+        letter-spacing: 4px;
+    }
+</style>
 </head>
 <body>
-  <div id="clock"></div>
 
-  <script>
-    function updateClock() {
-      document.getElementById("clock").innerHTML =
-        new Date().toLocaleTimeString();
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-  </script>
+<div id="clock"></div>
+
+<script>
+function updateClock() {
+    const now = new Date();
+    let h = now.getHours().toString().padStart(2, '0');
+    let m = now.getMinutes().toString().padStart(2, '0');
+    let s = now.getSeconds().toString().padStart(2, '0');
+
+    document.getElementById("clock").textContent = `${h}:${m}:${s}`;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+</script>
+
 </body>
 </html>
-
